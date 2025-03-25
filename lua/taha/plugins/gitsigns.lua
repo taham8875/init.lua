@@ -2,7 +2,6 @@ return {
 	{
 		'lewis6991/gitsigns.nvim',
 		config = function()
-			print('heellloo worrrld')
 			-- Added lines (green)
 			vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = '#6A9955' })
 

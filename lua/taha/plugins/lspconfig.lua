@@ -171,7 +171,7 @@ return {
 				clangd = {},
 				gopls = {},
 				pyright = {},
-				dartls = {},
+				['dart-debug-adapter'] = {},
 				rubocop = {},
 				ruby_lsp = {},
 				--
