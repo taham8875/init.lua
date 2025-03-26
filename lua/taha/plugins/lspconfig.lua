@@ -171,7 +171,6 @@ return {
 				clangd = {},
 				gopls = {},
 				pyright = {},
-				['dart-debug-adapter'] = {},
 				rubocop = {},
 				ruby_lsp = {},
 				--
@@ -217,7 +216,27 @@ return {
 			vim.list_extend(ensure_installed, {
 				'stylua', -- Used to format Lua code
 			})
-			require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+			require("lspconfig").dartls.setup({
+				cmd = { "/home/taha/flutter/bin/dart", "language-server", "--protocol=lsp" },
+				filetypes = { "dart" },
+				init_options = {
+					closinglabels = true,
+					flutteroutline = true,
+					onlyanalyzeprojectswithopenfiles = true,
+					outline = true,
+					suggestfromunimportedlibraries = true,
+				},
+				-- root_dir = root_pattern("pubspec.yaml"),
+				settings = {
+					dart = {
+						completefunctioncalls = true,
+						showtodos = true,
+					},
+				},
+				on_attach = function(client, bufnr)
+				end,
+			})
 
 			require('mason-lspconfig').setup {
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
