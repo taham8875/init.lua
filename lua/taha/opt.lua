@@ -10,14 +10,14 @@ vim.opt.relativenumber = true
 vim.o.swapfile = false
 
 -- enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Sync clipboard between os and neovim
 -- I have used to this in vscode, no intent to change
 -- I am using copyq btw
 -- scheduled to prevent increasing the startup time
 vim.schedule(function()
-	vim.opt.clipboard = 'unnamedplus'
+	vim.opt.clipboard = "unnamedplus"
 end)
 
 -- save undo history between sessions
@@ -31,10 +31,10 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- keep the sign column by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- preview substitutions live, as you type
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- show (highlight) which line the cursor is on
 -- idk if i like it or not
@@ -49,3 +49,10 @@ vim.opt.confirm = true
 
 -- highlight on search, clear on pressing esc in normal mode
 vim.opt.hlsearch = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.wrap = false

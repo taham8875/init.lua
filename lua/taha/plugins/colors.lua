@@ -5,7 +5,12 @@ return {
 		priority = 1000,
 		opts = {},
 		config = function()
-			vim.cmd.colorscheme "rose-pine"
-		end
-	}
+			require("rose-pine").setup({
+				styles = {
+					italic = false,
+				},
+			})
+			vim.cmd.colorscheme("rose-pine")
+		end,
+	},
 }
