@@ -74,11 +74,12 @@ return {
 					--  completions whenever it has completion options available.
 					["<C-j>"] = cmp.mapping.complete({}),
 
+					["<C-c>"] = cmp.mapping.close(),
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<Tab>"] = cmp.mapping.select_next_item(),
-					["<S-Tab>"] = cmp.mapping.select_prev_item(),
+					-- ["<Tab>"] = cmp.mapping.select_next_item(),
+					-- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Think of <c-l> as moving to the right of your snippet expansion.
 					--  So if you have a snippet that's like:
