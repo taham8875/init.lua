@@ -17,6 +17,9 @@ return {
 			-- Untracked lines (gray)
 			vim.api.nvim_set_hl(0, 'GitSignsUntracked', { fg = '#5c6370' })
 
+
+            vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = '#5c6370', italic = true })
+
 			require('gitsigns').setup({
 				signs = {
 					add          = { text = '┃', },

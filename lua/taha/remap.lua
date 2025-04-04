@@ -15,6 +15,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- join lines while keeping the cursor in its original position
+vim.keymap.set("n", "J", "mzJ`z")
+
 -- reindent the entire paragraph while keeping the cursor in its original position
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
@@ -26,3 +29,10 @@ vim.keymap.set("v", "<leader>d", '"md', { noremap = true })
 
 -- find and replace the current word, case insensitive
 vim.keymap.set("n", "<leader>fr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- select all
+vim.keymap.set("n", "<leader>vv", "gg<S-v>G")
+
+-- don't lose selection when shifting sidewards
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
