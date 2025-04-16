@@ -23,7 +23,7 @@ require("lazy").setup({
         -- import your plugins
         { import = "taha.plugins" },
         -- some plugins are simple, not worth to move them to the plugins folders
-        -- 'tpope/vim-sleuth', -- auto detect what the current file uses (tabs vs spaces, 2 or 4 or 8 space indent
+        'tpope/vim-sleuth', -- auto detect what the current file uses (tabs vs spaces, 2 or 4 or 8 space indent
 
         -- highlight todo, notes, etc in comments
         {
