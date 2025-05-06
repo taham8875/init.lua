@@ -237,6 +237,40 @@ return {
 				"stylua", -- Used to format Lua code
 			})
 
+			-- php lsp
+			-- require("lspconfig").intelephense.setup({
+			-- 	-- cmd = { "intelephense", "--stdio" },
+			-- 	-- filetypes = { "php" },
+			-- 	-- root_dir = function(fname)
+			-- 	-- 	return require("lspconfig.util").find_git_ancestor(fname) or vim.fn.getcwd()
+			-- 	-- end,
+			-- 	-- settings = {
+			-- 	-- 	intelephense = {
+			-- 	-- 		diagnostics = {
+			-- 	-- 			-- Disable the default PHP linting
+			-- 	-- 			enabled = false,
+			-- 	-- 		},
+			-- 	-- 	},
+			-- 	-- },
+			-- })
+
+			-- php lsp
+			require("lspconfig").phpactor.setup({
+				-- cmd = { "phpactor", "language-server" },
+				-- filetypes = { "php" },
+				-- root_dir = function(fname)
+				-- 	return require("lspconfig.util").find_git_ancestor(fname) or vim.fn.getcwd()
+				-- end,
+				-- settings = {
+				-- 	phpactor = {
+				-- 		diagnostics = {
+				-- 			-- Disable the default PHP linting
+				-- 			enabled = false,
+				-- 		},
+				-- 	},
+				-- },
+			})
+
 			require("lspconfig").dartls.setup({
 				cmd = { "/home/taha/flutter/bin/dart", "language-server", "--protocol=lsp" },
 				filetypes = { "dart" },

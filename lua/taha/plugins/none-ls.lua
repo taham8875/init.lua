@@ -33,6 +33,9 @@ return {
                 null_ls.builtins.formatting.htmlbeautifier,
                 null_ls.builtins.formatting.rufo,
                 null_ls.builtins.diagnostics.rubocop,
+                null_ls.builtins.formatting.blade_formatter,
+                null_ls.builtins.formatting.pint,
+                null_ls.builtins.diagnostics.phpstan,
                 -- 👇 Inject custom config here
                 cspell.diagnostics.with({
                     config = cspell_config,
