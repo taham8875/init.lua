@@ -36,3 +36,8 @@ vim.keymap.set("n", "<leader>vv", "gg<S-v>G")
 -- don't lose selection when shifting sidewards
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+-- if err != nil {
+--    return err
+-- }
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
