@@ -5,7 +5,9 @@ vim.g.maplocalleader = " "
 -- clear highlight on search on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- nvim-tree toggle is handled in nvim-tree.lua plugin config
+-- <leader>pv = toggle file tree
+-- <leader>pf = find current file in tree
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")

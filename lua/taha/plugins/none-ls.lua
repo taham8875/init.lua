@@ -27,26 +27,40 @@ return {
             end,
         }
 
+        -- Check if cspell is available
+        local sources = {
+            null_ls.builtins.formatting.stylua,
+            null_ls.builtins.formatting.htmlbeautifier,
+            null_ls.builtins.formatting.rubocop.with({
+                command = "rubocop", -- use globally installed rubocop (>= 1.77)
+                args = { "--auto-correct", "--stdin", "$FILENAME" },
+                to_temp_file = true, -- ensure clean buffer output
+                prefer_local = "false", -- don't use project `bundle exec` version
+            }),
+            null_ls.builtins.diagnostics.rubocop,
+            null_ls.builtins.formatting.blade_formatter,
+            null_ls.builtins.formatting.pint,
+            null_ls.builtins.diagnostics.phpstan,
+            null_ls.builtins.formatting.prettier,
+        }
+
+        -- Only add cspell if it's installed and available
+        local cspell_available = vim.fn.executable("cspell") == 1
+        if cspell_available then
+            -- 👇 Inject custom config here
+            table.insert(sources, cspell.diagnostics.with({
+                config = cspell_config,
+                diagnostics_postprocess = function(diagnostic)
+                    diagnostic.severity = vim.diagnostic.severity.HINT
+                end,
+            }))
+            table.insert(sources, cspell.code_actions.with({
+                config = cspell_config,
+            }))
+        end
+
         null_ls.setup({
-            sources = {
-                null_ls.builtins.formatting.stylua,
-                null_ls.builtins.formatting.htmlbeautifier,
-                null_ls.builtins.formatting.rufo,
-                null_ls.builtins.diagnostics.rubocop,
-                null_ls.builtins.formatting.blade_formatter,
-                null_ls.builtins.formatting.pint,
-                null_ls.builtins.diagnostics.phpstan,
-                -- 👇 Inject custom config here
-                cspell.diagnostics.with({
-                    config = cspell_config,
-                    diagnostics_postprocess = function(diagnostic)
-                        diagnostic.severity = vim.diagnostic.severity.HINT
-                    end,
-                }),
-                cspell.code_actions.with({
-                    config = cspell_config,
-                }),
-            },
+            sources = sources,
         })
 
         vim.keymap.set("n", "<leader>fc", vim.lsp.buf.format, {})

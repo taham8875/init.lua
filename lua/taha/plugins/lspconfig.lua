@@ -191,7 +191,7 @@ return {
 				clangd = {},
 				gopls = {},
 				pyright = {},
-				rubocop = {},
+				-- rubocop = {},
 				ruby_lsp = {},
 				--
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -270,6 +270,13 @@ return {
 				-- 	},
 				-- },
 			})
+
+			require("null-ls").builtins.formatting.rubocop.with({
+				command = "rubocop", -- uses system rubocop
+				extra_args = { "--force-exclusion" },
+			})
+
+			require("lspconfig").angularls.setup({})
 
 			require("lspconfig").dartls.setup({
 				cmd = { "/home/taha/flutter/bin/dart", "language-server", "--protocol=lsp" },
