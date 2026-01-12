@@ -69,7 +69,36 @@ return {
 					row = 0,
 					col = 1
 				},
+				on_attach = function(bufnr)
+					local gitsigns = require('gitsigns')
+
+					vim.keymap.set('n', '<leader>gb', function()
+						gitsigns.blame_line({ full = true })
+					end, { buffer = bufnr, desc = '[G]it [B]lame commit info' })
+				end,
 			})
+		end,
+	},
+	{
+		'linrongbin16/gitlinker.nvim',
+		config = function()
+			require('gitlinker').setup({
+				router = {
+					browse = {
+						["^github%.com"] = require("gitlinker.routers").github_browse,
+					},
+					blame = {
+						["^github%.com"] = require("gitlinker.routers").github_blame,
+					},
+				},
+			})
+
+			vim.keymap.set('n', '<leader>go', function()
+				require('gitlinker').link({
+					action = require('gitlinker.actions').system,
+					router_type = 'blame'
+				})
+			end, { desc = '[G]it [O]pen commit in browser' })
 		end,
 	}
 }
